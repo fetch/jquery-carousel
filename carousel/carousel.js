@@ -29,9 +29,10 @@
 
     function Carousel(element, options) {
       this.options = $.extend({}, {
-        play: false,
+        play: true,
         speed: 5000,
-        direction: 'horizontal'
+        direction: 'horizontal',
+        displayInFrame: 1
       }, options);
       this.index = 0;
       this.instance = $(element);
@@ -43,9 +44,13 @@
       this.slides = $('.slide', this.instance);
       this.bullets = $('.controls .bullet', this.instance);
       if (this.options.direction === 'horizontal') {
-        $('.slide,.frame', this.instance).width(this.instance.outerWidth());
-      } else {
+        $('.slide', this.instance).width(this.instance.outerWidth());
+        $('.frame', this.instance).width(this.instance.outerWidth() * this.options.displayInFrame);
         $('.slide,.frame', this.instance).height(this.instance.outerHeight());
+      } else {
+        $('.slide', this.instance).height(this.instance.outerHeight());
+        $('.frame', this.instance).height(this.instance.outerHeight() * this.options.displayInFrame);
+        $('.slide,.frame', this.instance).width(this.instance.outerWidth());
       }
       this.bindEvents();
       this.goToSlide(0);
@@ -65,7 +70,7 @@
     };
 
     Carousel.prototype.nextSlide = function() {
-      if (this.index + 1 >= this.slides.length) {
+      if (this.index + this.options.displayInFrame >= this.slides.length) {
         return this.goToSlide(0);
       } else {
         return this.goToSlide(this.index + 1);

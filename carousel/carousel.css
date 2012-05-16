@@ -1,39 +1,5 @@
-.carousel .frame {
-  position: relative;
-  overflow: hidden;
-  float: left;
-}
-.carousel .slides {
-  width: 100000px;
-  position: absolute;
-}
-.carousel .slide {
-  float: left;
-}
-.carousel .controls {
-  padding: 10px;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  display: block;
-  clear: both;
-}
-.carousel .controls > span {
-  padding: 0px;
-  cursor: pointer;
-}
-.carousel .controls > span span {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  text-indent: -100000px;
-  background-image: url("dots.png");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-}
-.carousel .controls > span:hover span,
-.carousel .controls > span.current span {
-  background-position: -15px 0;
-}
+.carousel .frame{position:relative;overflow:hidden;float:left;}
+.carousel .slides{width:100000px;position:absolute;}
+.carousel .slide{float:left;}
+.carousel .controls{padding:10px;text-align:center;-webkit-user-select:none;-moz-user-select:none;-o-user-select:none;user-select:none;display:block;clear:both;}.carousel .controls>span:hover span,.carousel .controls>span.current span{background-position:-15px 0;}
+.carousel .controls>span{padding:0px;cursor:pointer;}.carousel .controls>span span{display:inline-block;width:15px;height:15px;text-indent:-100000px;background-image:url("dots.png");background-repeat:no-repeat;background-position:0 0;}

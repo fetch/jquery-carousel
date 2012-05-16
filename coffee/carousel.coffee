@@ -14,9 +14,10 @@ class Carousel
   
   constructor: (element, options) ->
     @options = $.extend {}, 
-      play: false
+      play: true
       speed: 5000
       direction: 'horizontal'
+      displayInFrame: 1
     , options
     
     @index = 0
@@ -30,10 +31,14 @@ class Carousel
     @bullets = $('.controls .bullet', @instance)
     
     if @options.direction == 'horizontal'
-      $('.slide,.frame', @instance).width @instance.outerWidth()
-    else 
+      $('.slide', @instance).width @instance.outerWidth()
+      $('.frame', @instance).width @instance.outerWidth() * @options.displayInFrame
       $('.slide,.frame', @instance).height @instance.outerHeight()
-    
+    else
+      $('.slide', @instance).height @instance.outerHeight()
+      $('.frame', @instance).height @instance.outerHeight() * @options.displayInFrame
+      $('.slide,.frame', @instance).width @instance.outerWidth()
+
     this.bindEvents()
     this.goToSlide 0
     this.play() if @options.play
@@ -46,7 +51,7 @@ class Carousel
       
 
   nextSlide: ->
-    if @index + 1 >= @slides.length
+    if @index + @options.displayInFrame >= @slides.length
       this.goToSlide 0
     else
       this.goToSlide @index + 1
